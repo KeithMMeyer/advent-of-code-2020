@@ -31,9 +31,9 @@ public class Day01 {
 		System.out.println(trio[0] * trio[1] * trio[2]);
 	}
 
-	public static int[] threeAmigos(int[] numbers, int total) {
+	public static int[] threeAmigos(int[] numbers, int total) { // n^2 time
 		int[] result = new int[3];
-		for (int i = 0; i < numbers.length; i++) {
+		for (int i = 0; i < numbers.length; i++) { // n^2 time
 			int goal = total - numbers[i];
 			Pair<Integer, Integer> pair = perfectPair(numbers, goal);
 			if (pair != null) {
