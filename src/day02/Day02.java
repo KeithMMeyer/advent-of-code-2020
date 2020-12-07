@@ -16,7 +16,6 @@ public class Day02 {
 
 	public static int countMistakes(String[] passwords, boolean type) { // n time
 		int count = 0;
-		System.out.println(passwords.length);
 		for (int i = 0; i < passwords.length; i++) { // n time
 			String[] parts = passwords[i].split(" ");
 			if (validate(parts[0].split("-")[0], parts[0].split("-")[1], parts[1].substring(0, 1), parts[2], type))
@@ -30,13 +29,11 @@ public class Day02 {
 			String match = (("^[^" + c + "]*(" + c + "[^" + c + "]*){" + min + "," + max + "}[^" + c + "]*$"));
 			return password.matches(match);
 		} else {
-			if (Integer.valueOf(max) + 2 > password.length())
-				return false;
-			System.out.print(password.substring(Integer.valueOf(min) + 1, Integer.valueOf(min) + 2) + " ");
-			System.out.print(password.substring(Integer.valueOf(max) + 1, Integer.valueOf(max) + 2) + " ");
-			boolean low = password.substring(Integer.valueOf(min) + 1, Integer.valueOf(min) + 2).equals(c);
-			boolean high = password.substring(Integer.valueOf(max) + 1, Integer.valueOf(max) + 2).equals(c);
-			System.out.println(low + " " + high + " " + ((low || high) && !(low && high)));
+			//System.out.print(password.substring(Integer.valueOf(min) + 1, Integer.valueOf(min) + 2) + " ");
+			//System.out.print(password.substring(Integer.valueOf(max) + 1, Integer.valueOf(max) + 2) + " ");
+			boolean low = password.substring(Integer.valueOf(min) - 1, Integer.valueOf(min)).equals(c);
+			boolean high = password.substring(Integer.valueOf(max) - 1, Integer.valueOf(max)).equals(c);
+			//System.out.println(low + " " + high + " " + ((low || high) && !(low && high)));
 			return (low || high) && !(low && high);
 		}
 
