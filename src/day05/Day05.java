@@ -1,6 +1,7 @@
 package day05;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import main.AdventUtilities;
 
@@ -10,6 +11,28 @@ public class Day05 {
 
 		String[] strings = AdventUtilities.reader("day05");
 		System.out.println(findMax(strings));
+		System.out.println(findMissing(sort(strings)));
+	}
+
+	public static int findMissing(int[] tickets) {
+		int prev = tickets[0] - 1;
+		for (int t : tickets) {
+			if (t - 1 == prev) {
+				prev++;
+			} else {
+				return t - 1;
+			}
+		}
+		return -1;
+	}
+
+	public static int[] sort(String[] tickets) {
+		int[] IDs = new int[tickets.length];
+		for (int i = 0; i < tickets.length; i++) {
+			IDs[i] = scoreTicket(tickets[i].toCharArray());
+		}
+		Arrays.sort(IDs);
+		return IDs;
 	}
 
 	public static int findMax(String[] tickets) {
@@ -18,7 +41,6 @@ public class Day05 {
 		for (String t : tickets) {
 			current = scoreTicket(t.toCharArray());
 			if (max < current) {
-				System.out.println(t);
 			}
 			max = max > current ? max : current;
 		}
