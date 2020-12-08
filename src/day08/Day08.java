@@ -8,32 +8,34 @@ import main.AdventUtilities;
 public class Day08 {
 
 	static int acc = 0;
-	static HashSet<Integer> set = new HashSet<>();
 
 	public static void main(String[] args) throws IOException {
 
 		String[] strings = AdventUtilities.reader("day08");
-		repair(strings);
+		HashSet<Integer> set = new HashSet<>();
+		runner(strings, set);
+		System.out.println(acc);
+		repair(strings, set);
 		System.out.println(acc);
 
 	}
 
-	public static void repair(String[] strings) {
-		for (int i = 0; i < strings.length; i++) {
+	public static void repair(String[] strings, HashSet<Integer> set) {
+		for (int i = 0; i < strings.length; i++) { // n time
 			acc = 0;
 			set.clear();
 			String cmd = strings[i].split(" ")[0];
 			switch (cmd) {
 			case "nop":
 				strings[i] = "jmp" + " " + strings[i].split(" ")[1];
-				if (runner(strings) == 0) {
+				if (runner(strings, set) == 0) {
 					return;
 				}
 				strings[i] = "nop" + " " + strings[i].split(" ")[1];
 				break;
 			case "jmp":
 				strings[i] = "nop" + " " + strings[i].split(" ")[1];
-				if (runner(strings) == 0) {
+				if (runner(strings, set) == 0) {
 					return;
 				}
 				strings[i] = "jmp" + " " + strings[i].split(" ")[1];
@@ -43,12 +45,11 @@ public class Day08 {
 		}
 	}
 
-	public static int runner(String[] strings) {
+	public static int runner(String[] strings, HashSet<Integer> set) {
 		int line = 0;
 		while (line < strings.length) {
-			System.out.println(acc);
 			if (set.contains(line))
-				return -1;
+				return -1; // using traditional program syntax
 			set.add(line);
 			line = processLine(strings[line], line);
 		}
@@ -57,7 +58,6 @@ public class Day08 {
 
 	public static int processLine(String command, int line) {
 		String cmd = command.split(" ")[0];
-		System.out.println(command);
 		switch (cmd) {
 		case "acc":
 			acc += Integer.valueOf(command.split(" ")[1]);
