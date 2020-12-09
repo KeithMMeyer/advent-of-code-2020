@@ -17,12 +17,30 @@ public class Day04 {
 		HashMap<String, String> map = new HashMap<>();
 		for (int i = 0; i < strings.length; i++) {
 			mapPassport(strings[i], map);
-			if (hasFields(fields, map)) {
+			if (testValues(fields, map)) {
 				count++;
 			}
 			map.clear();
 		}
 		System.out.println(count);
+	}
+
+	public static boolean testValues(String[] fields, HashMap<String, String> map) {
+		String byr = "^(19[2-9][0-9]|200[0-2])$";
+		String iyr = "^(201[0-9]|2020)$";
+		String eyr = "^(202[0-9]|2030)$";
+		String hgt = "^((1[5-8][0-9]cm|19[0-3]cm)|(59in|6[0-9]in|7[0-6]in))$";
+		String hcl = "^(#[0-9a-f]{6})$";
+		String ecl = "^(amb|blu|brn|gry|grn|hzl|oth)$";
+		String pid = "^([0-9]{9})$";
+		String[] tests = { byr, iyr, eyr, hgt, hcl, ecl, pid };
+		for (int i = 0; i < fields.length; i++) {
+			if (!(map.containsKey(fields[i]) && map.get(fields[i]).matches(tests[i]))) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	public static boolean hasFields(String[] fields, HashMap<String, String> map) {
