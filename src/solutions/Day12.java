@@ -33,12 +33,6 @@ public class Day12 {
 		}
 	}
 
-	public static String[] other(String[] strings, boolean type) {
-
-		return strings;
-
-	}
-
 	public static void processLine(String command, boolean type) {
 		char cmd = command.charAt(0);
 		int value = Integer.valueOf(command.substring(1));
