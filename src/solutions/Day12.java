@@ -1,13 +1,10 @@
 package solutions;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import main.AdventUtilities;
 
 public class Day12 {
-
-	static HashMap<Integer, Integer> map = new HashMap<>();
 
 	static int x = 0;
 	static int y = 0;
