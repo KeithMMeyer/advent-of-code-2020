@@ -5,25 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import main.AdventUtilities;
+import main.Pair;
 
 public class Day16 {
 
 	//static ArrayList<Integer> nums = new ArrayList<>();
 	static HashMap<String, Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>> map = new HashMap<>();
-
-	static class Pair<S, T> { // very lightweight pair class to avoid javafx
-		public S k;
-		public T v;
-
-		public Pair(S key, T value) {
-			k = key;
-			v = value;
-		}
-
-		public String toString() {
-			return "( " + k + ", " + v + " )";
-		}
-	}
 
 	public static void main(String[] args) throws IOException {
 

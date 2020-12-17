@@ -4,18 +4,9 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import main.AdventUtilities;
+import main.Pair;
 
 public class Day01 {
-
-	static class Pair<S, T> { // very lightweight pair class to avoid javafx
-		public S k;
-		public T v;
-
-		public Pair(S key, T value) {
-			k = key;
-			v = value;
-		}
-	}
 
 	public static void main(String[] args) throws IOException {
 
