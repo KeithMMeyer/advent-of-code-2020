@@ -7,7 +7,6 @@ import main.AdventUtilities;
 
 public class Day19 {
 
-	//static ArrayList<Integer> nums = new ArrayList<>();
 	static HashMap<String, String> map = new HashMap<>();
 	static HashMap<Integer, String> regMap = new HashMap<>();
 	static int a;
